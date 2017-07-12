@@ -1,0 +1,33 @@
+package com.thinkjoy.base.utils.Image;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+public class FileImageCreator extends AbstractImageCreator {
+	private String fileName;  
+    
+    public String getFileName() {  
+        return fileName;  
+    }  
+  
+    public void setFileName(String fileName) {  
+        this.fileName = fileName;  
+    }  
+  
+    public FileImageCreator(Drawer drawer){  
+        super(drawer);  
+    }  
+      
+    public FileImageCreator(Drawer drawer, String fileName){  
+        super(drawer);  
+        this.fileName = fileName;  
+    }  
+  
+    @Override  
+    protected void saveImage(BufferedImage image)throws IOException{  
+        ImageIO.write(image, getFormatName(), new File(fileName));  
+    }  
+
+}
